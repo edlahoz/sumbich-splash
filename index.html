@@ -31,16 +31,15 @@
         }
         
         .logo {
-            max-width: 400px;
-            width: 80%;
             margin-bottom: 40px;
         }
         
         h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
+            margin: 30px 0;
             text-transform: uppercase;
-            font-weight: 900;
+            color: #e73c17;
+            font-weight: bold;
+            letter-spacing: 3px;
         }
         
         p {
@@ -49,13 +48,12 @@
             margin: 0 auto 30px;
         }
         
-        .coming-soon {
-            font-size: 2rem;
-            margin: 30px 0;
-            text-transform: uppercase;
-            color: #e73c17;
-            font-weight: bold;
-            letter-spacing: 3px;
+        .contact-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
         }
         
         .contact-btn {
@@ -68,7 +66,6 @@
             font-weight: bold;
             font-size: 1.2rem;
             transition: all 0.3s ease;
-            margin-top: 20px;
             cursor: pointer;
         }
         
@@ -76,6 +73,40 @@
             background-color: #c32d10;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .copy-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #333;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .copy-btn:hover {
+            background-color: #555;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .copy-success {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #c32d10;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
         
         .footer {
@@ -101,34 +132,48 @@
 </head>
 <body>
     <div class="container">
-        <img src="/api/placeholder/400/200" alt="SUMBICH Hot Sauce Logo" class="logo">
-        <div class="coming-soon">Coming Soon</div>
+        <img src="logo.png" alt="SUMBICH Hot Sauce Logo" class="logo">
         <h1>Prepare Your Taste Buds</h1>
-        <p>SUMBICH Hot Sauce is about to bring the heat to your kitchen. Our artisanal hot sauces are crafted with premium ingredients and a passion for flavor that kicks.</p>
-        <p>Stay tuned for our launch and be the first to experience the burn!</p>
+        <p><strong>Coming Soon:</strong> We're reimagining ketchup with a perfect balance of tomato sweetness and just enough heat to wake up your taste buds.</p>
+        <p>Stay tuned for our launch and be the first to experience the spicy goodness!</p>
         
-        <a class="contact-btn" id="contact-btn">Get in Touch</a>
+        <div class="contact-container">
+            <a class="contact-btn" id="contact-btn">Get in Touch</a>
+            <button class="copy-btn" id="copy-btn" title="Copy Email">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+            </button>
+        </div>
         
         <div class="footer">
             &copy; 2025 SUMBICH Hot Sauce. All rights reserved.
         </div>
     </div>
 
+    <div class="copy-success" id="copy-success">Email copied and ready to go!</div>
+    
     <script>
-        // Email obfuscation to protect from bots
+        const username = ['g','e','t','b','u','r','n','e','d'].join('');
+        const domain = ['s','u','m','b','i','c','h','.','c','o','m'].join('');
+        const email = `${username}@${domain}`;
+        
         document.getElementById('contact-btn').addEventListener('click', function(e) {
             e.preventDefault();
-            
-            // Deobfuscate email components
-            const username = ['g','e','t','b','u','r','n','e','d'].join('');
-            const domain = ['s','u','m','b','i','c','h','.','c','o','m'].join('');
-            
-            // Create and open mailto link when clicked
-            const mailtoLink = `mailto:${username}@${domain}`;
-            window.location.href = mailtoLink;
-            
-            // Alternative: You could also change the button text to show the email
-            this.textContent = `${username}@${domain}`;
+            window.location.href = `mailto:${email}`;
+            this.textContent = email;
+        });
+
+        document.getElementById('copy-btn').addEventListener('click', function() {
+            navigator.clipboard.writeText(email)
+                .then(() => {
+                    const successEl = document.getElementById('copy-success');
+                    successEl.style.opacity = '1';
+                    setTimeout(() => {
+                        successEl.style.opacity = '0';
+                    }, 2000);
+                })
         });
     </script>
 </body>
