@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUMBICH Hot Sauce - Coming Soon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            background-color: #fff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .logo {
+            max-width: 400px;
+            width: 80%;
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+        
+        p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .coming-soon {
+            font-size: 2rem;
+            margin: 30px 0;
+            text-transform: uppercase;
+            color: #e73c17;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+        
+        .contact-btn {
+            display: inline-block;
+            background-color: #e73c17;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        
+        .contact-btn:hover {
+            background-color: #c32d10;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .footer {
+            margin-top: 60px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            p {
+                font-size: 1.1rem;
+            }
+            
+            .coming-soon {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="/api/placeholder/400/200" alt="SUMBICH Hot Sauce Logo" class="logo">
+        <div class="coming-soon">Coming Soon</div>
+        <h1>Prepare Your Taste Buds</h1>
+        <p>SUMBICH Hot Sauce is about to bring the heat to your kitchen. Our artisanal hot sauces are crafted with premium ingredients and a passion for flavor that kicks.</p>
+        <p>Stay tuned for our launch and be the first to experience the burn!</p>
+        
+        <a class="contact-btn" id="contact-btn">Get in Touch</a>
+        
+        <div class="footer">
+            &copy; 2025 SUMBICH Hot Sauce. All rights reserved.
+        </div>
+    </div>
+
+    <script>
+        // Email obfuscation to protect from bots
+        document.getElementById('contact-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Deobfuscate email components
+            const username = ['g','e','t','b','u','r','n','e','d'].join('');
+            const domain = ['s','u','m','b','i','c','h','.','c','o','m'].join('');
+            
+            // Create and open mailto link when clicked
+            const mailtoLink = `mailto:${username}@${domain}`;
+            window.location.href = mailtoLink;
+            
+            // Alternative: You could also change the button text to show the email
+            this.textContent = `${username}@${domain}`;
+        });
+    </script>
+</body>
+</html>
